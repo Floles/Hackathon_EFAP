@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var path = require('path');
-const quizz = require ('./quizz.json');
+const quizz = require('./quizz.json');
 
 
 router.post('*', function (req, res, next) {
-  fs.readFile(path.join(__dirname, 'store.json'), 'utf8', function (err, data) {
+  /*fs.readFile(path.join(__dirname, 'store.json'), 'utf8', function (err, data) {
     if (err) {
       return console.log(err);
     }
@@ -14,12 +14,14 @@ router.post('*', function (req, res, next) {
       return el.id_store == 1;
     });
     console.log(store);
-  });
+  });*/
+
+  console.log(req.body.result.action);
 
   switch (req.body.result.action) {
     case 'location':
       res.json({
-        speech: 'Votre boutique la plus proche est au 60 rue la Boetie 75008 Paris, ouverte jusqu\'à 22h30 ', 
+        speech: 'Votre boutique la plus proche est au 60 rue la Boetie 75008 Paris, ouverte jusqu\'à 22h30 ',
         source: 'webhook'
       });
       break;
@@ -34,25 +36,30 @@ router.post('*', function (req, res, next) {
         speech: 'Les commandes via Google Home seront bientôt disponibles, en attendant jouons ensemble pour tenter de gagner une surprise gourmet, Es-tu prêt à faire un quizz ?',
         source: 'webhook'
       })
+
+      break;
     case 'command.command-yes':
-    //quizz[0].answers.filter(answer => answer.correct)
+      //quizz[0].answers.filter(answer => answer.correct)
       res.json({
-        speech: quizz[0].question + quizz[0].answers[0].text + ' ou '+ quizz[0].answers[1].text,
+        speech: quizz[0].question + quizz[0].answers[0].text + ' ou ' + quizz[0].answers[1].text,
         source: 'webhook'
       })
+      break;
     case 'command.command-yes.command-yes-question2':
       //quizz[0].answers.filter(answer => answer.correct)
-        res.json({
-          speech: quizz[1].question + quizz[1].answers[0].text + ' ou '+ quizz[1].answers[1].text,
-          source: 'webhook'
-        })
-    case 'command.command-yes.command-yes-question2.command-yes-question3':
-    //quizz[0].answers.filter(answer => answer.correct)
       res.json({
-        speech: quizz[2].question + quizz[2].answers[0].text + ' ou '+ quizz[2].answers[1].text,
+        speech: quizz[1].question + quizz[1].answers[0].text + ' ou ' + quizz[1].answers[1].text,
         source: 'webhook'
       })
-  default:
+      break;
+    case 'command.command-yes.command-yes-question2.command-yes-question3':
+      //quizz[0].answers.filter(answer => answer.correct)
+      res.json({
+        speech: quizz[2].question + quizz[2].answers[0].text + ' ou ' + quizz[2].answers[1].text,
+        source: 'webhook'
+      })
+      break;
+    default:
       res.json({
         speech: 'Je n\'ai pas compris',
         source: 'webhook'
