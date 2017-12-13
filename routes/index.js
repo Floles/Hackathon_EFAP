@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var path = require('path');
+const quizz = require ('./quizz.json');
 
 
 router.post('*', function (req, res, next) {
@@ -18,23 +19,40 @@ router.post('*', function (req, res, next) {
   switch (req.body.result.action) {
     case 'location':
       res.json({
-        speech: 'Votre boutique la plus proche est à la Boetie ', 
+        speech: 'Votre boutique la plus proche est au 60 rue la Boetie 75008 Paris, ouverte jusqu\'à 22h30 ', 
         source: 'webhook'
       });
       break;
     case 'product':
       res.json({
-        speech: 'le produit est ' + req.body.result.parameters.product,
+        speech: 'Les meilleurs sushis sont chez Sushi Shop, venez déguster nos ' + req.body.result.parameters.product,
         source: 'webhook'
       });
       break;
-    case 'street-address':
+    case 'command':
       res.json({
-        speech: 'Je suis au ' + req.body.result.parameters.location,
+        speech: 'Les commandes via Google Home seront bientôt disponibles, en attendant jouons ensemble pour tenter de gagner une surprise gourmet, Es-tu prêt à faire un quizz ?',
         source: 'webhook'
-      });
-      break;
-    default:
+      })
+    case 'command.command-yes':
+    //quizz[0].answers.filter(answer => answer.correct)
+      res.json({
+        speech: quizz[0].question + quizz[0].answers[0].text + ' ou '+ quizz[0].answers[1].text,
+        source: 'webhook'
+      })
+    case 'command.command-yes.command-yes-question2':
+      //quizz[0].answers.filter(answer => answer.correct)
+        res.json({
+          speech: quizz[1].question + quizz[1].answers[0].text + ' ou '+ quizz[1].answers[1].text,
+          source: 'webhook'
+        })
+    case 'command.command-yes.command-yes-question2.command-yes-question3':
+    //quizz[0].answers.filter(answer => answer.correct)
+      res.json({
+        speech: quizz[2].question + quizz[2].answers[0].text + ' ou '+ quizz[2].answers[1].text,
+        source: 'webhook'
+      })
+  default:
       res.json({
         speech: 'Je n\'ai pas compris',
         source: 'webhook'

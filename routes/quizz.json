@@ -1,64 +1,70 @@
 [
-    { "question1":"Qu'est-ce qu'un tataki ? ",
+    { "question":"Qu'est-ce qu'un tataki ? ",
         "answers":[
             {
-                "text1":"Un revêtement de sol traditionnel des maisons japonaises",
-                "correct":false
+                "text":"A - Un revêtement de sol traditionnel des maisons japonaises",
+                "correct":false, 
+                "value":"a"
             },
             {
-                "text2":"Une technique de préparation de poisson ou viande de la cuisine japonaise",
-                "correct":true
+                "text":"B - Une technique de préparation de poisson ou viande de la cuisine japonaise",
+                "correct":true,
+                "value":"b"
             }
         ]
 
     },
-    { "question2":"En quelle année Sushi-Shop a été créé ? ",
+    { "question":"En quelle année Sushi-Shop a été créé ? ",
         "answers":[
             {
-                "text1":"2007",
-                "correct":false
+                "text":"A - 2007",
+                "correct":false,
+                "value":"a"
             },
             {
-                "text2":"1998",
-                "correct":true
+                "text":"B - 1998",
+                "correct":true,
+                "value":"b"
             }
         ]
 
     },
-    { "question3":"Que veut dire le mot saké en japonais ?",
+    { "question":"Que veut dire le mot saké en japonais ?",
         "answers":[
             {
-                "text1":"On ne supporte pas une personne et on ne peut pas la saquer",
-                "correct":false
+                "text":"A - On ne supporte pas une personne et on ne peut pas la saquer",
+                "correct":false,
+                "value":"a"
             },
             {
-                "text2":"Ce mot désigne toutes les boissons alcoolisées",
-                "correct":true
+                "text":"B - Ce mot désigne toutes les boissons alcoolisées",
+                "correct":true,
+                "value":"b"
             }
         ]
 
     },
-    { "question4":"Le Ceviche est de quelle origine ? ",
+    { "question":"Le Ceviche est de quelle origine ? ",
         "answers":[
             {
-                "text1":"Amérique Latine",
+                "text":"Amérique Latine",
                 "correct":true
             },
             {
-                "text2":"Japon",
+                "text":"Japon",
                 "correct":false
             }
         ]
 
     },
-    { "question5":"Qu'est-ce que l'edamame ",
+    { "question":"Qu'est-ce que l'edamame ",
         "answers":[
             {
-                "text1":"Une préparation de fèves immatures de soja",
+                "text":"Une préparation de fèves immatures de soja",
                 "correct":true
             },
             {
-                "text2":"Un fromage préparé par une mamie provençale",
+                "text":"Un fromage préparé par une mamie provençale",
                 "correct":false
             }
         ]
