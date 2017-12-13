@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 
 
-router.all('*', function (req, res, next) {
+router.post('*', function (req, res, next) {
   fs.readFile(path.join(__dirname, 'store.json'), 'utf8', function (err, data) {
     if (err) {
       return console.log(err);
@@ -18,18 +18,10 @@ router.all('*', function (req, res, next) {
   switch (req.body.result.action) {
     case 'location':
       res.json({
-        speech: 'Le plus proche est à ' + req.body.result.parameters['geo-city'],
+        speech: 'Votre boutique la plus proche est à la Boetie ', 
         source: 'webhook'
       });
       break;
-    case 'price':
-      // Sur le site de sushi shop -> cheerio -> récupérer le prix 
-      res.json({
-        speech: 'Le prix est ...',
-        source: 'webhook'
-      });
-      break;
-      console.log(req.body.result.parameters);
     case 'product':
       res.json({
         speech: 'le produit est ' + req.body.result.parameters.product,
